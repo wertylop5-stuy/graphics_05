@@ -154,4 +154,27 @@ void rotate(struct Matrix *t, char axis, float deg) {
 	free_matrix(temp);
 }
 
+//the p0, p1, etc is just the x or y coord
+void parametric_exec(Matrix *m, float a, float b, float c, float d, float step) {
+	float t;
+	for (t = 0; t <= 1; t += step) {
+		
+	}
+}
+
+void make_circle(Matrix *m, float cx, float cy, float cz, float r) {
+	
+}
+
+void make_hermite(float x0, float y0, float x1, float y1,
+		float rx0, float ry0, float rx1, float ry1) {
+	
+}
+
+void make_bezier(float x0, float y0, float x1, float y1,
+		float x2, float y2, float x3, float y3) {
+	
+}
+
+
 

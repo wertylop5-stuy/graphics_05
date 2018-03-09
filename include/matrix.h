@@ -37,4 +37,13 @@ void scale(struct Matrix *t, float a, float b, float c);
 void move(struct Matrix *t, float a, float b, float c);
 void rotate(struct Matrix *t, char axis, float deg);	//0: x, 1: y, 2: z
 
+//runs generic parametric function at^3 + bt^2 + ct + d with t [0, 1]
+void parametric_exec(Matrix *m, float a, float b, float c, float d, float step);
+
+void make_circle(Matrix *m, float cx, float cy, float cz, float r);
+void make_hermite(float x0, float y0, float x1, float y1,
+	float rx0, float ry0, float rx1, float ry1);
+void make_bezier(float x0, float y0, float x1, float y1,
+	float x2, float y2, float x3, float y3);
+
 #endif
