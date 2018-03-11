@@ -9,13 +9,29 @@ int main(int argc, char **argv) {
 		exit(1);
 	}
 	struct Matrix *edges = new_matrix(4, 1);
-	struct Matrix *trans = new_matrix(4, 4);
+	struct Matrix *transform = new_matrix(4, 4);
 	Frame f;
 	memset(f, 0, sizeof(f));
-	parse_instructions(argv[1], trans, edges, f);
+	
+	struct Pixel p;
+	pixel_color(&p, 255, 235, 205);
 
+	//make_circle(edges, 200, 200, 0, 100);
+	//make_hermite(edges, 159, 259, 340, 200, 282, 485, 19, 16);
+	/*
+	parametric_exec(edges, 82, -24, 123, 159, 528, -813, 226, 259);
+	printf("outside\n");
+	print_matrix(edges);
+	draw_lines(f, edges, &p);
+	printf("outside1\n");
+
+	display(f);
+	*/
+
+	parse_instructions("script", transform, edges, f);
+	
 	free_matrix(edges);
-	free_matrix(trans);
+	free_matrix(transform);
 	
 	return 0;
 }

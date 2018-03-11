@@ -1,3 +1,8 @@
+/* draw.h
+ * 
+ * Plotting pixels onto a frame
+ * */
+
 #ifndef DRAW_H
 #define DRAW_H
 
@@ -25,10 +30,5 @@ void draw_line(Frame grid, struct Pixel *p, int x1, int y1, int x2, int y2);
 void draw_lines(Frame grid, struct Matrix *m, struct Pixel *p);
 
 void pixel_color(struct Pixel *p, unsigned char r, unsigned char g, unsigned char b);
-
-void push_point(struct Matrix *m, float x, float y, float z);
-
-void push_edge(struct Matrix *m, float x1, float y1,
-		float z1, float x2, float y2, float z2);
 
 #endif

@@ -98,83 +98,21 @@ void resize(struct Matrix *m) {
 	m->cols *= 2;
 }
 
-void scale(struct Matrix *t, float a, float b, float c) {
-	struct Matrix *temp = new_matrix(4, 4);
-	ident(temp);
-	
-	temp->m[0][0] = a;
-	temp->m[1][1] = b;
-	temp->m[2][2] = c;
-	
-	matrix_mult(temp, t);
-	free_matrix(temp);
-}
-
-void move(struct Matrix *t, float a, float b, float c) {
-	struct Matrix *temp = new_matrix(4, 4);
-	ident(temp);
-	
-	temp->m[0][3] = a;
-	temp->m[1][3] = b;
-	temp->m[2][3] = c;
-	
-	matrix_mult(temp, t);
-	free_matrix(temp);
-}
-
-void rotate(struct Matrix *t, char axis, float deg) {
-	struct Matrix *temp = new_matrix(4, 4);
-	ident(temp);
-	float rad = deg * (M_PI/180.0f);
-	
-	switch(axis) {
-		case 'z':
-			temp->m[0][0] = cosf(rad);
-			temp->m[0][1] = -sinf(rad);
-			temp->m[1][0] = sinf(rad);
-			temp->m[1][1] = cosf(rad);
-		break;
-		
-		case 'x':
-			temp->m[1][1] = cosf(rad);
-			temp->m[1][2] = -sinf(rad);
-			temp->m[2][1] = sinf(rad);
-			temp->m[2][2] = cosf(rad);
-		break;
-		
-		case 'y':
-			temp->m[0][0] = cosf(rad);
-			temp->m[2][0] = -sinf(rad);
-			temp->m[0][2] = sinf(rad);
-			temp->m[2][2] = cosf(rad);
-		break;
+void push_point(struct Matrix *m, float x, float y, float z) {
+	if (m->back == m->cols) {
+		resize(m);
 	}
 
-	matrix_mult(temp, t);
-	free_matrix(temp);
+	m->m[0][m->back] = x;
+	m->m[1][m->back] = y;
+	m->m[2][m->back] = z;
+	m->m[3][m->back] = 1.0f;
+	m->back++;
 }
 
-//the p0, p1, etc is just the x or y coord
-void parametric_exec(Matrix *m, float a, float b, float c, float d, float step) {
-	float t;
-	for (t = 0; t <= 1; t += step) {
-		
-	}
+void push_edge(struct Matrix *m, float x1, float y1,
+		float z1, float x2, float y2, float z2) {
+	push_point(m, x1, y1, z1);
+	push_point(m, x2, y2, z2);
 }
-
-void make_circle(Matrix *m, float cx, float cy, float cz, float r) {
-	
-}
-
-void make_hermite(float x0, float y0, float x1, float y1,
-		float rx0, float ry0, float rx1, float ry1) {
-	
-}
-
-void make_bezier(float x0, float y0, float x1, float y1,
-		float x2, float y2, float x3, float y3) {
-	
-}
-
-
 

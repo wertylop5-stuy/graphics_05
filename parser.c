@@ -56,6 +56,28 @@ void parse_instructions(char *filename, struct Matrix *t,
 		}
 		else if (!strncmp(line, "quit", strlen(line)-1)) {
 			break;
+			fgets(line, sizeof(line), file);
+			sscanf(line, "%s", name);
+		}
+		else if (!strncmp(line, "circle", strlen(line)-1)) {
+			float cx, cy, cz, r;
+			fgets(line, sizeof(line), file);
+			sscanf(line, "%f %f %f %f", &cx, &cy, &cz, &r);
+			make_circle(e, cx, cy, cz, r);
+		}
+		else if (!strncmp(line, "hermite", strlen(line)-1)) {
+			float x0, y0, x1, y1, rx0, ry0, rx1, ry1;
+			fgets(line, sizeof(line), file);
+			sscanf(line, "%f %f %f %f %f %f %f %f",
+				&x0, &y0, &x1, &y1, &rx0, &ry0, &rx1, &ry1);
+			make_hermite(e, x0, y0, x1, y1, rx0, ry0, rx1, ry1);
+		}
+		else if (!strncmp(line, "bezier", strlen(line)-1)) {
+			float x0, y0, x1, y1, x2, y2, x3, y3;
+			fgets(line, sizeof(line), file);
+			sscanf(line, "%f %f %f %f %f %f %f %f",
+				&x0, &y0, &x1, &y1, &x2, &y2, &x3, &y3);
+			make_bezier(e, x0, y0, x1, y1, x2, y2, x3, y3);
 		}
 	}
 	
