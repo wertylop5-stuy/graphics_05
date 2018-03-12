@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
 	struct Pixel p;
 	pixel_color(&p, 255, 235, 205);
 	
-	parse_instructions("script", transform, edges, f);
+	parse_instructions(argv[1], transform, edges, f);
 	
 	free_matrix(edges);
 	free_matrix(transform);
