@@ -21,4 +21,11 @@ bezier
 #connecting curve
 bezier
 79 205 82.1 205.4 82 235.7 79 235
+#eyes
+circle
+200 300 0 1
+circle
+260 293 0 1
+bezier
+173.4 290 203.4 275 271.7 281.7 294 284
 display
