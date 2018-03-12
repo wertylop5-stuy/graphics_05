@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
 	struct Matrix *edges = new_matrix(4, 1);
 	struct Matrix *transform = new_matrix(4, 4);
 	Frame f;
-	memset(f, 0, sizeof(f));
+	memset(f, 255, sizeof(f));
 	
 	struct Pixel p;
 	pixel_color(&p, 255, 235, 205);
